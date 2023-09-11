@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +22,20 @@ public class MemberApiController {
         return new CreateMemberResponse(id);
     }
 
+    /**
+     * 등록 API
+     * @param req
+     * @return id
+     */
+    @PostMapping("/api/v2/members")
+    public CreateMemberResponse saveMemberV2(@RequestBody @Valid CreateMemberRequest req) {
+        Member member = new Member();
+        member.setName(req.getName());
+
+        Long id = memberService.join(member);
+        return new CreateMemberResponse(id);
+    }
+
     @Data
     static class CreateMemberResponse {
         private Long id;
@@ -28,5 +43,11 @@ public class MemberApiController {
         public CreateMemberResponse(Long id) {
             this.id = id;
         }
+    }
+
+    @Data
+    static class CreateMemberRequest {
+        @NotEmpty
+        private String name;
     }
 }

@@ -24,4 +24,13 @@ public abstract class Item {
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    //===생성자 메서드===//
+    public void removeStock(int count) {
+        this.stockQuantity -= count;
+    }
+
+    public void addStock(int count) {
+        this.stockQuantity += count;
+    }
 }

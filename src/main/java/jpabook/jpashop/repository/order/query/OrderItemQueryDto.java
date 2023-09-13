@@ -7,13 +7,13 @@ import lombok.Data;
 public class OrderItemQueryDto {
 
     @JsonIgnore
-    private Long id;
+    private Long orderId;
     private String itemName;
     private int orderPrice;
     private int orderCount;
 
-    public OrderItemQueryDto(Long id, String itemName, int orderPrice, int orderCount) {
-        this.id = id;
+    public OrderItemQueryDto(Long orderId, String itemName, int orderPrice, int orderCount) {
+        this.orderId = orderId;
         this.itemName = itemName;
         this.orderPrice = orderPrice;
         this.orderCount = orderCount;

@@ -13,6 +13,7 @@ spring:
 #        show_sql: true  # 얘는 콘솔창에 찍는 거라, 운영환경에서는 no
         format_sql: true
         default_batch_fetch_size: 100
+    open-in-view: false
 
 logging:
   level:
